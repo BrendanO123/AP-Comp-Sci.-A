@@ -1,0 +1,21 @@
+The first security feature is the bank to bank account communication.
+
+The bank and bank accounts communicate by sharing a byte list with the same value. 
+The byte list is formed by a hash, a non-invertible, deterministic function that is very secure.
+This hash is mostly redundant as it works on a symmetrical key system where both parties know a secret number known as a key.
+This key is exchanged by the Diffie-Hellman key exchange which was design to be safe even if all communications are intercepted.
+It works by using the non-invertibility of modular exponentiation, 
+which is raising a base to a power and then using modular division to get a remainder.
+    (This is famously non-invertible, known as the discrete logarithm problem.)
+
+The method works as follows:
+    The base and modulus are public knowledge and all communications are public.
+    Each party creates their own random exponent.
+    Then they both independently do their own modular exponentiation to get an encrypted value which is shared.
+    Then each party raises the value they receive to the power of their own secret exponent and independently arrive at the same value.
+    This is the shared key.
+As both parties have the same key and know the same about of information about the key (no hashes) this is known as a symmetrical key encryption.
+
+Additionally, the bank creates a readable pin from this hash to share with the user.
+
+Finally, the storage for the bank data is encrypted and needs a manager code to decrypt and load.
