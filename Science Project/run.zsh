@@ -1,2 +1,0 @@
-/usr/bin/clang++ -std=gnu++14 -fcolor-diagnostics -fansi-escape-codes -g "/Users/1006609/Desktop/untitled folder/Coding/Project/CPlus.cpp" -o "/Users/1006609/Desktop/untitled folder/Coding/Project/CPlus"
-/Users/1006609/Desktop/untitled\ folder/Coding/Project/CPlus

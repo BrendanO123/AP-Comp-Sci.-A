@@ -1,8 +1,0 @@
-Biome chart, spline charts, map mixers, asset placement rules, ground foliage rules, permutation tables, perlin maps, fractal maps
-
-Erosion, continental-ness, weirdness, rainfall, temperature, peaks and valleys?, (Surface depth map, pre-generated assets, ground fertility map) (decoration assets), everything is kept
-
-Biome map, terrain height 2d map, 3d terrain map, 3d cave map 
-Biome map, terrain height 2d map, Floating removal floodfill (modified 3d terrain map), cave flattening (modified 3d cave map), aquifers?, slope map (for later)
-Biome map, 3d terrain map, slope map (decoration assets)
-3d map
