@@ -153,129 +153,112 @@ public class TilePainter {
         }
     }
 
-    public void genAssets(){
+    public static void main(String[] args){
+        int tileSize = 30;
+        BufferedImage tileSheet = new BufferedImage(13*tileSize, tileSize * 2, 1);
+        genAssets(tileSheet, tileSize);
+    }
+    public void genAssets(){genAssets(tileSheet, 30);}
+    public static void genAssets(BufferedImage spriteSheet, int tileSize){
 
-        Graphics2D graphics = tileSheet.createGraphics();
+        Graphics2D graphics = spriteSheet.createGraphics();
         int color;
 
         color=new Color(170,215,80).getRGB();
-        for(int x=0; x<90; x++){
-            for(int y=0; y<30; y++){
-                tileSheet.setRGB(x, y, color);
+        for(int x=0; x<tileSize*3; x++){
+            for(int y=0; y<tileSize; y++){
+                spriteSheet.setRGB(x, y, color);
             }
         }
 
         color=new Color(162,209,72).getRGB();
-        for(int x=0; x<90; x++){
-            for(int y=30; y<60; y++){
-                tileSheet.setRGB(x, y, color);
+        for(int x=0; x<tileSize*3; x++){
+            for(int y=tileSize; y<tileSize*2; y++){
+                spriteSheet.setRGB(x, y, color);
             }
         }
 
         color=new Color(219,50,54).getRGB();
-        for(int x=90; x<120; x++){
-            for(int y=0; y<30; y++){
-                tileSheet.setRGB(x, y, color);
+        for(int x=tileSize*3; x<tileSize*4; x++){
+            for(int y=0; y<tileSize; y++){
+                spriteSheet.setRGB(x, y, color);
             }
         }
 
         color=new Color(185,60,132).getRGB();
-        for(int x=90; x<120; x++){
-            for(int y=30; y<60; y++){
-                tileSheet.setRGB(x, y, color);
+        for(int x=tileSize*3; x<tileSize*4; x++){
+            for(int y=tileSize; y<tileSize*2; y++){
+                spriteSheet.setRGB(x, y, color);
             }
         }
 
         color=new Color(229,194,159).getRGB();
-        for(int x=120; x<390; x++){
-            for(int y=0; y<30; y++){
-                tileSheet.setRGB(x, y, color);
+        for(int x=tileSize*4; x<tileSize*13; x++){
+            for(int y=0; y<tileSize; y++){
+                spriteSheet.setRGB(x, y, color);
             }
         }
 
         color=new Color(215,184,153).getRGB();
-        for(int x=120; x<390; x++){
-            for(int y=30; y<60; y++){
-                tileSheet.setRGB(x, y, color);
+        for(int x=tileSize*4; x<tileSize*13; x++){
+            for(int y=tileSize; y<tileSize*2; y++){
+                spriteSheet.setRGB(x, y, color);
             }
         }
 
 
+        graphics.setFont(new Font("Helvetica", Font.BOLD, 24));
+        FontMetrics fm = graphics.getFontMetrics();
 
+        Color colors[] = {
+            new Color(24,118,210),
+            new Color(58,143,62),
+            new Color(211,48,47),
+            new Color(123,32,162),
+            new Color(245,130,0),
+            new Color(34,138,249),
+            new Color(105,105,105),
+            new Color(30,20,15)
+        };
+        for(int i = 1; i <= 8; i++){
+            String text = Integer.toString(i);
+            int x = 4 * tileSize + ((tileSize - fm.stringWidth(text)) / 2) + i * tileSize;
+            int y = ((tileSize + fm.getAscent()) / 2);
 
-        graphics.setFont(new Font("Font", Font.BOLD, 24));
-
-
-        graphics.setColor(new Color(24,118,210));
-        graphics.drawString("1", 153, 24);
-        graphics.drawString("1", 153, 54);
-
-        graphics.setColor(new Color(58,143,62));
-        graphics.drawString("2", 183, 24);
-        graphics.drawString("2", 183, 54);
-
-        graphics.setColor(new Color(211,48,47));
-        graphics.drawString("3", 213, 24);
-        graphics.drawString("3", 213, 54);
-
-        graphics.setColor(new Color(123,32,162));
-        graphics.drawString("4", 243, 24);
-        graphics.drawString("4", 243, 54);
-
-        graphics.setColor(new Color(245,130,0));
-        graphics.drawString("5", 273, 24);
-        graphics.drawString("5", 273, 54);
-
-        graphics.setColor(new Color(34,138,249));
-        graphics.drawString("6", 303, 24);
-        graphics.drawString("6", 303, 54);
-
-        graphics.setColor(new Color(105,105,105));
-        graphics.drawString("7", 333, 24);
-        graphics.drawString("7", 333, 54);
-
-        graphics.setColor(new Color(30,20,15));
-        graphics.drawString("8", 363, 24);
-        graphics.drawString("8", 363, 54);
-
+            graphics.setColor(colors[i-1]);
+            graphics.drawString(text, x, y);
+            graphics.drawString(text, x, y + tileSize);
+        }
 
         graphics.setColor(new Color(230,51,6));
 
+        for(int y = 0; y<=tileSize; y+= tileSize){
+            graphics.drawLine(tileSize * 2, y, tileSize * 3 - 1, y + tileSize - 1);
+            graphics.drawLine(tileSize * 2 + 1, y, tileSize * 3 - 1, y + tileSize - 2);
+            graphics.drawLine(tileSize * 2, y + 1, tileSize * 3 - 2, y + tileSize - 1);
 
-        graphics.drawLine(60, 29, 89, 0);
-        graphics.drawLine(88, 0, 60, 28);
-        graphics.drawLine(89, 1, 61, 29);
-
-        graphics.drawLine(60, 0, 89, 29);
-        graphics.drawLine(61, 0, 89, 28);
-        graphics.drawLine(60, 1, 88, 29);
-
-        graphics.drawLine(60, 59, 89, 30);
-        graphics.drawLine(88, 30, 60, 58);
-        graphics.drawLine(89, 31, 61, 59);
-
-        graphics.drawLine(60, 30, 89, 59);
-        graphics.drawLine(61, 30, 89, 58);
-        graphics.drawLine(60, 31, 88, 59);
-
+            graphics.drawLine(tileSize * 2, y + tileSize - 1, tileSize * 3 - 1, y);
+            graphics.drawLine(tileSize * 2, y + tileSize - 2, tileSize * 3 - 2, y);
+            graphics.drawLine(tileSize * 2 + 1, y + tileSize - 1, tileSize * 3 - 1, y + 1);
+        }
 
         graphics.setColor(new Color(141,34,35));
-        graphics.fillOval(96, 6, 17, 17);
+        graphics.fillOval(3 * tileSize + (tileSize - 16) / 2 - 1, (tileSize - 16) / 2 - 1, 17, 17);
 
 
         graphics.setColor(new Color(120,42,90));
-        graphics.fillOval(96, 36, 17, 17);
+        graphics.fillOval(3 * tileSize + (tileSize - 16) / 2 - 1, tileSize + (tileSize - 16) / 2 - 1, 17, 17);
 
         try{
             //Load flag icon
 
-            BufferedImage flag = ImageIO.read(new File("Grass copy.png"));
+            BufferedImage flag = ImageIO.read(new File("BaseGame/flag_icon.png"));
             for(int x=0; x<30; x++){
                 for(int y=0; y<30; y++){
                     int RGB =flag.getRGB(x, y);
                     if(RGB!=0){
-                        tileSheet.setRGB(x+30, y, RGB);
-                        tileSheet.setRGB(x+30, y+30, RGB);
+                        spriteSheet.setRGB(x + (3 * tileSize) / 2 - 16, y + tileSize / 2 - 16, RGB);
+                        spriteSheet.setRGB(x + (3 * tileSize) / 2 - 16, y + (3 * tileSize) / 2 - 16, RGB);
                     }
                 }
             }
@@ -284,7 +267,7 @@ public class TilePainter {
         catch(IOException e){e.printStackTrace();}
 
         //Write sheet
-        try{ImageIO.write(tileSheet, "PNG", new File("TileSheet.png"));}
+        try{ImageIO.write(spriteSheet, "PNG", new File("BaseGame/TileSheet" + tileSize + ".png"));}
         catch(IOException e){e.printStackTrace();}
 
     }
